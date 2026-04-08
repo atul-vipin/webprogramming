@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contact Us - Electronics Learning Center</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="navbar">
+  <a href="/">Home</a>
+  <a href="/register">Login</a>
+  <a href="/learn">Learn</a>
+  <a href="/assessment">Assessment</a>
+  <a href="/feedback.html">Feedback</a>
+  <a href="/testimonials.html">Testimonials</a>
+  <a href="/contact.html">Contact Us</a>
+</div>
+
+<div class="hero">
+  <h1>Contact Us</h1>
+  <p>Questions about courses, enrollment, or assessments? Reach out anytime.</p>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h2>Support Desk</h2>
+    <ul class="info-list">
+      <li>Email: support@electronicslearningcenter.com</li>
+      <li>Phone: +91 9496646692</li>
+      <li>Hours: Mon to Sat, 9:00 AM to 6:00 PM</li>
+      <li>Location: K block, Vellore Institute of Technology</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Send a Message</h2>
+    <form id="contactForm" novalidate>
+      <label for="contactName">Full Name:</label>
+      <input type="text" id="contactName" name="contactName" placeholder="Enter your full name" required>
+
+      <label for="contactEmail">Email:</label>
+      <input type="email" id="contactEmail" name="contactEmail" placeholder="student@example.com" required>
+
+      <label for="contactSubject">Subject:</label>
+      <input type="text" id="contactSubject" name="contactSubject" placeholder="Course access, fees, or support" required>
+
+      <label for="contactMessage">Message:</label>
+      <textarea id="contactMessage" name="contactMessage" rows="5" maxlength="400" required></textarea>
+
+      <button type="submit" class="button" style="width:100%">Send Message</button>
+    </form>
+  </div>
+</div>
+
+<script src="main.js" defer></script>
+</body>
+</html>
+
