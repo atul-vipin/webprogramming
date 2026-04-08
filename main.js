@@ -13,6 +13,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     initializeCsvStore();
+    applyHashRoutes();
     highlightActiveNav();
     setupNavVisibility();
     setupProtectedRoute();
@@ -31,6 +32,25 @@
   function getCurrentPage() {
     const path = window.location.pathname;
     return path || "/";
+  }
+
+  function getBasePath() {
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    return parts.length > 0 ? "/" + parts[0] : "";
+  }
+
+  function toHashRoute(path) {
+    return getBasePath() + "/#" + path;
+  }
+
+  function applyHashRoutes() {
+    const links = document.querySelectorAll("a[data-route]");
+    links.forEach(function (link) {
+      const route = link.getAttribute("data-route");
+      if (route) {
+        link.setAttribute("href", toHashRoute(route));
+      }
+    });
   }
 
   function getSessionUser() {
@@ -60,19 +80,20 @@
 
   function setupNavVisibility() {
     const sessionUser = getSessionUser();
-    const protectedHrefs = ["/learn", "/assessment"];
-    const authHref = "/register";
+    const protectedRoutes = ["/learn", "/assessment"];
+    const authRoute = "/register";
 
     document.querySelectorAll(".navbar a").forEach(function (link) {
+      const route = link.getAttribute("data-route");
       const href = link.getAttribute("href");
 
-      if (!sessionUser && protectedHrefs.indexOf(href) !== -1) {
+      if (!sessionUser && route && protectedRoutes.indexOf(route) !== -1) {
         link.classList.add("hidden");
-      } else {
+      } else if (route) {
         link.classList.remove("hidden");
       }
 
-      if (sessionUser && href === authHref) {
+      if (sessionUser && route === authRoute) {
         link.classList.add("hidden");
       }
     });
@@ -101,7 +122,7 @@
     logoutBtn.textContent = "Logout";
     logoutBtn.addEventListener("click", function () {
       clearSessionUser();
-      window.location.href = "/register";
+      window.location.href = toHashRoute("/register");
     });
     authPanel.appendChild(logoutBtn);
   }
@@ -114,7 +135,7 @@
     const sessionUser = getSessionUser();
     if (sessionUser) return;
 
-    window.location.href = "/register?next=" + encodeURIComponent(path);
+    window.location.href = toHashRoute("/register");
   }
 
   function setupHomePage() {
