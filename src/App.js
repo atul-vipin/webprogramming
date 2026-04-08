@@ -551,10 +551,7 @@ function LearnPage() {
               <li>Validate HDMI handshake and isolate the failing stage</li>
             </ul>
             <div className="media-grid">
-              <video className="learn-media" controls preload="metadata" poster="/tv.jpg">
-                <source src="/tv.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <img className="learn-media" src="/tv.jpg" alt="Television main board and panel overview" />
             </div>
           </div>
         )}
@@ -602,10 +599,7 @@ function LearnPage() {
               <li>Trace a no network issue to the RF block</li>
             </ul>
             <div className="media-grid">
-              <video className="learn-media" controls preload="metadata" poster="/mobile.jpg">
-                <source src="/mobile.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <img className="learn-media" src="/mobile.jpg" alt="Mobile phone board layout and diagnostics" />
             </div>
           </div>
         )}
